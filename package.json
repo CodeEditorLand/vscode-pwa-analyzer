@@ -1,24 +1,29 @@
 {
   "name": "vscode-pwa-analyzer",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Log viewer for https://github.com/microsoft/vscode-pwa",
   "main": "index.js",
   "scripts": {
     "test": "npm run lint",
     "fmt": "prettier --write \"src/**/*.{ts,tsx,scss}\" && npm run lint -- --fix",
     "start": "webpack-dev-server --open",
-    "build": "webpack --config webpack.production.js"
+    "build": "webpack --config webpack.production.js",
+    "prepublishOnly": "TypeScriptESBuild Source/**/*.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/microsoft/vscode-pwa-analyzer.git"
+    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
   },
-  "author": "Connor Peet <connor@peet.io>",
+  "author": {
+    "name": "Nikola Hristov",
+    "email": "nikola@nikolahristov.tech",
+    "url": "https://nikolahristov.tech"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/microsoft/vscode-pwa-analyzer/issues"
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
   },
-  "homepage": "https://github.com/microsoft/vscode-pwa-analyzer#readme",
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
   "devDependencies": {
     "@types/lodash-es": "4.17.10",
     "@types/pako": "2.0.2",
@@ -41,17 +46,16 @@
     "use-debounce": "9.0.4",
     "webpack": "5.89.0",
     "webpack-cli": "5.1.4",
-    "webpack-dev-server": "4.15.1"
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "avoid",
-    "printWidth": 100,
-    "tabWidth": 2
+    "webpack-dev-server": "4.15.1",
+    "typescript-esbuild": "0.3.1"
   },
   "dependencies": {
     "lodash-es": "4.17.21",
     "pako": "2.1.0"
+  },
+  "type": "module",
+  "private": "false",
+  "publishConfig": {
+    "access": "public"
   }
 }
