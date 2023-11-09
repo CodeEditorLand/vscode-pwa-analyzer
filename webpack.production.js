@@ -1,5 +1,5 @@
 module.exports = {
-	...require("./webpack.config"),
-	mode: "production",
-	devtool: false,
+  ...require('./webpack.config'),
+  mode: 'production',
+  devtool: false,
 };
