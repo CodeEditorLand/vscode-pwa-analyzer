@@ -15,16 +15,8 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "webpack --config webpack.production.js",
-		"fmt": "prettier --write \"src/**/*.{ts,tsx,scss}\" && npm run lint -- --fix",
 		"start": "webpack-dev-server --open",
 		"test": "npm run lint"
-	},
-	"prettier": {
-		"arrowParens": "avoid",
-		"printWidth": 100,
-		"singleQuote": true,
-		"tabWidth": 2,
-		"trailingComma": "all"
 	},
 	"dependencies": {
 		"lodash-es": "4.17.21",
