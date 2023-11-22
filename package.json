@@ -1,6 +1,7 @@
 {
   "name": "vscode-pwa-analyzer",
   "version": "0.0.1",
+  "private": "false",
   "description": "Log viewer for https://github.com/microsoft/vscode-pwa",
   "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
   "bugs": {
@@ -16,12 +17,14 @@
     "email": "nikola@nikolahristov.tech",
     "url": "https://nikolahristov.tech"
   },
+  "publisher": "playform",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.production.js",
+    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
     "start": "webpack-dev-server --open",
-    "test": "npm run lint",
-    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
+    "test": "npm run lint"
   },
   "dependencies": {
     "lodash-es": "4.17.21",
@@ -45,15 +48,12 @@
     "style-loader": "3.3.3",
     "ts-loader": "9.5.1",
     "typescript": "5.3.2",
+    "typescript-esbuild": "0.3.1",
     "use-debounce": "10.0.0",
     "webpack": "5.89.0",
     "webpack-cli": "5.1.4",
-    "webpack-dev-server": "4.15.1",
-    "typescript-esbuild": "0.3.1"
+    "webpack-dev-server": "4.15.1"
   },
-  "type": "module",
-  "publisher": "playform",
-  "private": "false",
   "publishConfig": {
     "access": "public"
   }
