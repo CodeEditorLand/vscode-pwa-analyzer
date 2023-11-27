@@ -160,8 +160,8 @@ export const getReciprocalId = (item: ILogItem) => {
 		return isRequest(item)
 			? `dap-${item.metadata.connectionId}-${item.metadata.message.seq}`
 			: isResponse(item)
-			? `dap-${item.metadata.connectionId}-${item.metadata.message.request_seq}`
-			: undefined;
+			  ? `dap-${item.metadata.connectionId}-${item.metadata.message.request_seq}`
+			  : undefined;
 	}
 
 	return undefined;
