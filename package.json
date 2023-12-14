@@ -29,7 +29,6 @@
     "html-webpack-plugin": "5.5.0",
     "node-sass": "7.0.1",
     "normalize.css": "8.0.1",
-    "prettier": "2.5.1",
     "react": "16.14.0",
     "react-data-grid": "7.0.0-canary.16",
     "react-dom": "16.14.0",
@@ -42,13 +41,6 @@
     "webpack": "5.69.0",
     "webpack-cli": "4.9.2",
     "webpack-dev-server": "4.7.4"
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "avoid",
-    "printWidth": 100,
-    "tabWidth": 2
   },
   "dependencies": {
     "lodash-es": "4.17.21",
