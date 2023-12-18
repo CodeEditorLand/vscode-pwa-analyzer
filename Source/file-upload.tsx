@@ -2,11 +2,11 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 
-import * as React from "react";
 import { inflate } from "pako";
+import * as React from "react";
 
 export const FileUpload: React.FC<{ onChange(text: string): void }> = (
-	props
+	props,
 ) => {
 	const uploadFile = React.useCallback(
 		(evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +36,7 @@ export const FileUpload: React.FC<{ onChange(text: string): void }> = (
 				reader.readAsArrayBuffer(file);
 			}
 		},
-		[]
+		[],
 	);
 
 	return <input type="file" onChange={uploadFile} />;

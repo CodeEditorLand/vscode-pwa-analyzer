@@ -17,7 +17,7 @@ export class RowSelection {
 
 	protected constructor(
 		private readonly rows: ReadonlyArray<number>,
-		private lastRow?: number
+		private lastRow?: number,
 	) {}
 
 	/**
@@ -28,13 +28,13 @@ export class RowSelection {
 		if (this.rows[index] === row) {
 			return new RowSelection(
 				[...this.rows.slice(0, index), ...this.rows.slice(index + 1)],
-				row
+				row,
 			);
 		}
 
 		return new RowSelection(
 			[...this.rows.slice(0, index), row, ...this.rows.slice(index)],
-			row
+			row,
 		);
 	}
 

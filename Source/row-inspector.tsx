@@ -24,7 +24,7 @@ export const RowInspector: React.FC<{
 				close();
 			}
 		},
-		[close]
+		[close],
 	);
 
 	React.useEffect(() => {

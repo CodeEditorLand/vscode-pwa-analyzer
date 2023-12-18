@@ -3,10 +3,10 @@
  *--------------------------------------------------------*/
 
 import * as React from "react";
-import { ILogItem, wordToLogLevel, LogLevel, isDap, isCdp } from "./model";
-import { Timestamp } from "./timestamp";
+import { ILogItem, LogLevel, isCdp, isDap, wordToLogLevel } from "./model";
 import { MultiSelect } from "./multi-select";
 import { RowSelection } from "./row-selection";
+import { Timestamp } from "./timestamp";
 
 export interface IFilter {
 	name: string;
@@ -42,16 +42,16 @@ export const Controls: React.FC<{
 		(rows: ReadonlySet<number>) => {
 			const nextRows = new Set([...highlightRows]);
 
-			if (![...rows].some((r) => !highlightRows.has(r))) {
-				rows.forEach((r) => nextRows.delete(r));
-			} else {
+			if ([...rows].some((r) => !highlightRows.has(r))) {
 				rows.forEach((r) => nextRows.add(r));
+			} else {
+				rows.forEach((r) => nextRows.delete(r));
 			}
 
 			setHighlightedRows(nextRows);
 			onHighlight(nextRows);
 		},
-		[highlightRows, onHighlight]
+		[highlightRows, onHighlight],
 	);
 
 	React.useEffect(() => {
@@ -107,7 +107,7 @@ export const Controls: React.FC<{
 const SystemInfo: React.FC<{ data: ILogItem<any>[] }> = ({ data }) => {
 	const welcome = React.useMemo(
 		() => data.find((d) => d.tag === "runtime.welcome"),
-		[data]
+		[data],
 	);
 
 	if (!welcome) {
@@ -163,13 +163,13 @@ const GrepFilter: React.FC<{
 	const onInvertedChange = React.useCallback(
 		(evt: React.ChangeEvent<HTMLInputElement>) =>
 			setInverted(evt.target.checked),
-		[setInverted]
+		[setInverted],
 	);
 
 	const onInputChange = React.useCallback(
 		(evt: React.ChangeEvent<HTMLInputElement>) =>
 			setInput(evt.target.value),
-		[setInput]
+		[setInput],
 	);
 
 	const add = React.useCallback(
@@ -178,7 +178,7 @@ const GrepFilter: React.FC<{
 			addFilter(createFilter(input, inverted));
 			setInput("");
 		},
-		[addFilter, setInput, inverted, input]
+		[addFilter, setInput, inverted, input],
 	);
 
 	return (
@@ -221,11 +221,11 @@ const Filters: React.FC<{
 }> = ({ selection, filters, onUpdate, onHighlight }) => {
 	const filterValues = React.useMemo(
 		() => filters.map((_, i) => String(i)),
-		[filters]
+		[filters],
 	);
 	const filterNames = React.useMemo(
 		() => filters.map((f) => f.name),
-		[filters]
+		[filters],
 	);
 	const [selectedFilters, setSelectedFilters] = React.useState<
 		ReadonlyArray<string>
@@ -238,7 +238,7 @@ const Filters: React.FC<{
 
 	const addFilter = React.useCallback(
 		(filter: IFilter) => onUpdate([...filters, filter]),
-		[filters, onUpdate]
+		[filters, onUpdate],
 	);
 
 	const filterToSelection = React.useCallback(() => {
@@ -265,7 +265,8 @@ const Filters: React.FC<{
 			<div className="form-control-row">
 				<button
 					onClick={removeFilter}
-					disabled={!selectedFilters.length}>
+					disabled={!selectedFilters.length}
+				>
 					Remove
 				</button>
 				<button onClick={highlightSelection} disabled={selection.empty}>
@@ -316,9 +317,9 @@ const ConnectionSelector: React.FC<{
 									!isCdp(row) ||
 									row.metadata.connectionId !== id;
 					})
-					.filter((fn): fn is (item: ILogItem) => boolean => !!fn)
+					.filter((fn): fn is (item: ILogItem) => boolean => !!fn),
 			),
-		[onUpdate, tags]
+		[onUpdate, tags],
 	);
 
 	return (
@@ -345,11 +346,11 @@ const LevelSelector: React.FC<{
 			onUpdate(
 				new Set(
 					[...newWords].map(
-						(w) => wordToLogLevel[w as keyof typeof wordToLogLevel]
-					)
-				)
+						(w) => wordToLogLevel[w as keyof typeof wordToLogLevel],
+					),
+				),
 			),
-		[onUpdate]
+		[onUpdate],
 	);
 
 	return (
@@ -381,7 +382,7 @@ const TagSelector: React.FC<{
 
 	const onUpdateFromArray = React.useCallback(
 		(t: ReadonlyArray<string>) => onUpdate(new Set(t)),
-		[onUpdate]
+		[onUpdate],
 	);
 
 	return (

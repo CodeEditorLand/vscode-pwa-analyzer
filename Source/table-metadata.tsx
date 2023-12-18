@@ -3,15 +3,15 @@
  *--------------------------------------------------------*/
 
 import * as React from "react";
+import { classes } from "./helpers";
 import {
 	ILogItem,
+	getReciprocalId,
+	isReceive,
 	protocolTags,
 	requestParams,
 	responseData,
-	getReciprocalId,
-	isReceive,
 } from "./model";
-import { classes } from "./helpers";
 
 const stringifyMetadata = (metadata: any) => {
 	return metadata === undefined
@@ -24,14 +24,14 @@ const onReciprocalHover = (evt: React.MouseEvent) => {
 	const matched = document.querySelectorAll(`[data-reciprocal-id=${ownId}]`);
 	if (matched.length) {
 		Array.from(matched).map((m) =>
-			m.classList.add("inline-message-matched")
+			m.classList.add("inline-message-matched"),
 		);
 	}
 };
 
 const offReciprocalHover = () => {
 	Array.from(document.querySelectorAll(".inline-message-matched")).forEach(
-		(m) => m.classList.remove("inline-message-matched")
+		(m) => m.classList.remove("inline-message-matched"),
 	);
 };
 
@@ -54,7 +54,7 @@ export const TableMetadata: React.FC<{
 }> = ({ item, onClick: onClickRaw }) => {
 	const onClick = React.useCallback(
 		() => onClickRaw(item),
-		[item, onClickRaw]
+		[item, onClickRaw],
 	);
 
 	if (!protocolTags.includes(item.tag)) {
@@ -77,13 +77,14 @@ export const TableMetadata: React.FC<{
 				className={classes(
 					"inline-message",
 					"inline-message-request",
-					directionClass
+					directionClass,
 				)}
 				data-reciprocal-id={getReciprocalId(item)}
 				onMouseEnter={onReciprocalHover}
 				onMouseLeave={offReciprocalHover}
 				onClick={onClick}
-				role="button">
+				role="button"
+			>
 				{getPrefix(item)}
 				{request.method}({stringifyMetadata(request.params)})
 			</span>
@@ -95,13 +96,14 @@ export const TableMetadata: React.FC<{
 			className={classes(
 				"inline-message",
 				"inline-message-response",
-				directionClass
+				directionClass,
 			)}
 			data-reciprocal-id={getReciprocalId(item)}
 			onMouseEnter={onReciprocalHover}
 			onMouseLeave={offReciprocalHover}
 			onClick={onClick}
-			role="button">
+			role="button"
+		>
 			{getPrefix(item)}
 			{stringifyMetadata(responseData(item))}
 		</span>

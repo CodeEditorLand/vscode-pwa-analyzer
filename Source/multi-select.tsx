@@ -31,24 +31,26 @@ export const MultiSelect: React.FC<
 
 			updateTags(result);
 		},
-		[updateTags]
+		[updateTags],
 	);
 
 	React.useEffect(() => onUpdate(selectedTags), [selectedTags]);
 
 	return (
 		<select
-			multiple
+			multiple={true}
 			value={[...selectedTags]}
 			// tslint:disable-next-line:react-a11y-no-onchange
 			onChange={updateTagsCallback}
 			className="tag-selector"
-			{...props}>
+			{...props}
+		>
 			{[...values].sort().map((t, i) => (
 				<option
 					key={t}
 					value={t}
-					aria-selected={selectedTags.includes(t)}>
+					aria-selected={selectedTags.includes(t)}
+				>
 					{labels ? labels[i] : t}
 				</option>
 			))}

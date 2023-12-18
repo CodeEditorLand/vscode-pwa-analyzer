@@ -6,13 +6,13 @@
  * Copied partly from vscode-pwa
  */
 
-export const enum LogLevel {
+export enum LogLevel {
 	Verbose = 0,
-	Info,
-	Warn,
-	Error,
-	Fatal,
-	Never,
+	Info = 1,
+	Warn = 2,
+	Error = 3,
+	Fatal = 4,
+	Never = 5,
 }
 
 export const logLevelToWord = {
@@ -43,7 +43,7 @@ export interface ILogItem<T = any> {
 }
 
 // Known logs tags
-export const enum LogTag {
+export enum LogTag {
 	Runtime = "runtime",
 	RuntimeWelcome = "runtime.welcome",
 	RuntimeException = "runtime.exception",
@@ -160,8 +160,8 @@ export const getReciprocalId = (item: ILogItem) => {
 		return isRequest(item)
 			? `dap-${item.metadata.connectionId}-${item.metadata.message.seq}`
 			: isResponse(item)
-				? `dap-${item.metadata.connectionId}-${item.metadata.message.request_seq}`
-				: undefined;
+			  ? `dap-${item.metadata.connectionId}-${item.metadata.message.request_seq}`
+			  : undefined;
 	}
 
 	return undefined;

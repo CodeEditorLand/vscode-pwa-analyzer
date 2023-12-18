@@ -15,7 +15,7 @@ export const TimestampSinceEpoch: React.FC<{
 	const [showInterval, setShowInterval] = React.useState(true);
 	const swap = React.useCallback(
 		() => setShowInterval(!showInterval),
-		[showInterval, setShowInterval]
+		[showInterval, setShowInterval],
 	);
 
 	const delta = new Date(value).getTime() - new Date(epoch).getTime();
