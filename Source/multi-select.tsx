@@ -31,7 +31,7 @@ export const MultiSelect: React.FC<
 
 			updateTags(result);
 		},
-		[updateTags],
+		[updateTags]
 	);
 
 	React.useEffect(() => onUpdate(selectedTags), [selectedTags]);
@@ -43,14 +43,12 @@ export const MultiSelect: React.FC<
 			// tslint:disable-next-line:react-a11y-no-onchange
 			onChange={updateTagsCallback}
 			className="tag-selector"
-			{...props}
-		>
+			{...props}>
 			{[...values].sort().map((t, i) => (
 				<option
 					key={t}
 					value={t}
-					aria-selected={selectedTags.includes(t)}
-				>
+					aria-selected={selectedTags.includes(t)}>
 					{labels ? labels[i] : t}
 				</option>
 			))}

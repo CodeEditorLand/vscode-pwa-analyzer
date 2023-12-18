@@ -25,7 +25,7 @@ export const LogView: React.FC<{ file: string }> = ({ file }) => {
 				})
 				.filter((v: unknown): v is ILogItem<any> => !!v)
 				.map((v, i) => ({ ...v, _index: i })),
-		[file],
+		[file]
 	);
 
 	const [highlightRows, setHighlightRows] = React.useState<
@@ -33,11 +33,11 @@ export const LogView: React.FC<{ file: string }> = ({ file }) => {
 	>(new Set());
 	const [selectedRows, setSelectedRows] = React.useState(RowSelection.empty);
 	const [inspectedRow, setInspected] = React.useState<ILogItem<any> | null>(
-		null,
+		null
 	);
 	const closeInspector = React.useCallback(
 		() => setInspected(null),
-		[setInspected],
+		[setInspected]
 	);
 	const [renderedRows, setRendered] = React.useState<ILogItem<any>[]>([]);
 	const epoch = rows.length ? rows[0].timestamp : 0;

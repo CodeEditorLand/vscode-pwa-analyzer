@@ -12,7 +12,7 @@ import { RowSelection } from "./row-selection";
 
 const createColumns = (
 	epoch: number,
-	onLogEntryClick: (item: ILogItem) => void,
+	onLogEntryClick: (item: ILogItem) => void
 ): Column<ILogItem<any>>[] => {
 	return [
 		{
@@ -73,7 +73,7 @@ export const Table: React.FC<{
 }) => {
 	const columns = React.useMemo(
 		() => createColumns(epoch, inspect),
-		[rows, inspect],
+		[rows, inspect]
 	);
 
 	const onRowClick = React.useCallback(
@@ -103,7 +103,7 @@ export const Table: React.FC<{
 				setSelectedRows(selectedRows.single(row));
 			}
 		},
-		[selectedRows, setSelectedRows],
+		[selectedRows, setSelectedRows]
 	);
 
 	const rowRenderer: React.FC<RealRowRendererProps> = React.useCallback(
@@ -112,15 +112,14 @@ export const Table: React.FC<{
 				role="button"
 				className={classes(
 					selectedRows.includes(props.row._index) && "row-selected",
-					highlightRows.has(props.row._index) && "row-highlighted",
+					highlightRows.has(props.row._index) && "row-highlighted"
 				)}
 				onClick={onRowClick}
-				data-index={props.row._index}
-			>
+				data-index={props.row._index}>
 				<Row {...props} />
 			</div>
 		),
-		[onRowClick, selectedRows, highlightRows],
+		[onRowClick, selectedRows, highlightRows]
 	);
 
 	const minWidth = window.innerWidth - 250;
