@@ -9,13 +9,13 @@ import * as React from "react";
  */
 export const MultiSelect: React.FC<
 	{
-		values: ReadonlyArray<string>;
-		labels?: ReadonlyArray<string>;
-		onUpdate: (tags: ReadonlyArray<string>) => void;
+		values: readonly string[];
+		labels?: readonly string[];
+		onUpdate: (tags: readonly string[]) => void;
 	} & React.SelectHTMLAttributes<HTMLSelectElement>
 > = ({ values, onUpdate, labels, ...props }) => {
 	const [selectedTags, updateTags] =
-		React.useState<ReadonlyArray<string>>(values);
+		React.useState<readonly string[]>(values);
 	const updateTagsCallback = React.useCallback(
 		(evt: React.ChangeEvent<HTMLSelectElement>) => {
 			const options = evt.target.options;

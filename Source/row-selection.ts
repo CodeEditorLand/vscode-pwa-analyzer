@@ -16,7 +16,7 @@ export class RowSelection {
 	public readonly empty = this.rows.length === 0;
 
 	protected constructor(
-		private readonly rows: ReadonlyArray<number>,
+		private readonly rows: readonly number[],
 		private lastRow?: number,
 	) {}
 
@@ -83,7 +83,6 @@ export class RowSelection {
 				next.push(row);
 			} else {
 				row = (this.rows[rowIndex] || fromRow) - 1;
-				continue;
 			}
 		}
 

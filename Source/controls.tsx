@@ -25,7 +25,7 @@ export const Controls: React.FC<{
 	const [selectedTags, updateTags] = React.useState(new Set<string>());
 	const [selectedLevels, updateLevels] = React.useState(new Set<LogLevel>());
 	const [customFilters, setCustomFilters] = React.useState<
-		ReadonlyArray<IFilter>
+		readonly IFilter[]
 	>([createFilter("telemetry", true)]);
 	const [connectionFilters, setConnectionFilters] = React.useState<
 		ReadonlyArray<(row: ILogItem) => boolean>
@@ -215,9 +215,9 @@ const GrepFilter: React.FC<{
 
 const Filters: React.FC<{
 	selection: RowSelection;
-	filters: ReadonlyArray<IFilter>;
+	filters: readonly IFilter[];
 	onHighlight(filters: ReadonlySet<number>): void;
-	onUpdate(filters: ReadonlyArray<IFilter>): void;
+	onUpdate(filters: readonly IFilter[]): void;
 }> = ({ selection, filters, onUpdate, onHighlight }) => {
 	const filterValues = React.useMemo(
 		() => filters.map((_, i) => String(i)),
@@ -228,7 +228,7 @@ const Filters: React.FC<{
 		[filters],
 	);
 	const [selectedFilters, setSelectedFilters] = React.useState<
-		ReadonlyArray<string>
+		readonly string[]
 	>([]);
 
 	const removeFilter = React.useCallback(() => {
@@ -290,7 +290,7 @@ const ConnectionSelector: React.FC<{
 	const tags = React.useMemo(() => {
 		const s = new Set<string>();
 		for (const row of data) {
-			const connectionId = row.metadata && row.metadata.connectionId;
+			const connectionId = row.metadata?.connectionId;
 			if (connectionId !== undefined) {
 				s.add(`${isDap(row) ? "DAP #" : "CDP #"}${connectionId}`);
 			}
@@ -299,7 +299,7 @@ const ConnectionSelector: React.FC<{
 	}, [data]);
 
 	const onUpdateFromArray = React.useCallback(
-		(enabled: ReadonlyArray<string>) =>
+		(enabled: readonly string[]) =>
 			onUpdate(
 				tags
 					.map((tag) => {
@@ -342,7 +342,7 @@ const LevelSelector: React.FC<{
 }> = ({ onUpdate }) => {
 	const words = React.useMemo(() => Object.keys(wordToLogLevel), []);
 	const onUpdateFromWords = React.useCallback(
-		(newWords: ReadonlyArray<string>) =>
+		(newWords: readonly string[]) =>
 			onUpdate(
 				new Set(
 					[...newWords].map(
@@ -381,7 +381,7 @@ const TagSelector: React.FC<{
 	}, [data]);
 
 	const onUpdateFromArray = React.useCallback(
-		(t: ReadonlyArray<string>) => onUpdate(new Set(t)),
+		(t: readonly string[]) => onUpdate(new Set(t)),
 		[onUpdate],
 	);
 
