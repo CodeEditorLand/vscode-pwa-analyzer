@@ -1,9 +1,33 @@
 {
+	"name": "vscode-pwa-analyzer",
+	"version": "0.0.1",
+	"private": false,
+	"description": "Log viewer for https://github.com/microsoft/vscode-pwa",
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"bugs": {
+		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"build": "webpack --config webpack.production.js",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"start": "webpack-dev-server --open"
+	},
 	"dependencies": {
 		"lodash-es": "^4.17.21",
 		"pako": "^2.0.4"
 	},
-	"description": "Log viewer for https://github.com/microsoft/vscode-pwa",
 	"devDependencies": {
 		"@types/lodash-es": "^4.17.6",
 		"@types/pako": "^1.0.3",
@@ -28,12 +52,7 @@
 		"webpack-cli": "^4.9.2",
 		"webpack-dev-server": "^4.7.4"
 	},
-	"main": "index.js",
-	"name": "vscode-pwa-analyzer",
-	"scripts": {
-		"build": "webpack --config webpack.production.js",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
-		"start": "webpack-dev-server --open"
-	},
-	"type": "module"
+	"publishConfig": {
+		"access": "public"
+	}
 }
