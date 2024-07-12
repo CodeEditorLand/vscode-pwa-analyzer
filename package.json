@@ -1,0 +1,44 @@
+{
+  "name": "vscode-pwa-analyzer",
+  "version": "1.0.0",
+  "description": "Log viewer for https://github.com/microsoft/vscode-pwa",
+  "main": "index.js",
+  "scripts": {
+    "fmt": "prettier --write \"src/**/*.{ts,tsx,scss}\"",
+    "start": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoft/vscode-pwa-analyzer.git"
+  },
+  "author": "Connor Peet <connor@peet.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/microsoft/vscode-pwa-analyzer/issues"
+  },
+  "homepage": "https://github.com/microsoft/vscode-pwa-analyzer#readme",
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "arrowParens": "avoid",
+    "printWidth": 100,
+    "tabWidth": 2
+  },
+  "dependencies": {
+    "@microlink/react-json-view": "^1.23.1",
+    "fflate": "^0.8.2",
+    "prettier": "^3.3.2",
+    "react": "^18.3.1",
+    "react-data-grid": "^7.0.0-beta.44",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "normalize.css": "^8.0.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.2"
+  }
+}
