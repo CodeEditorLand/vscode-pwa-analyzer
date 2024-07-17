@@ -7,10 +7,10 @@
 		"start": "vite"
 	},
 	"dependencies": {
-		"@microlink/react-json-view": "^1.23.1",
-		"fflate": "^0.8.2"
+		"@microlink/react-json-view": "1.23.1",
+		"fflate": "0.8.2"
 	},
 	"devDependencies": {
-		"normalize.css": "^8.0.1"
+		"normalize.css": "8.0.1"
 	}
 }
