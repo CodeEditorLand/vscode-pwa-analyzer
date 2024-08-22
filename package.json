@@ -1,16 +1,16 @@
 {
+	"name": "vscode-pwa-analyzer",
+	"description": "Log viewer for https://github.com/microsoft/vscode-pwa",
+	"main": "index.js",
+	"scripts": {
+		"build": "vite build",
+		"start": "vite"
+	},
 	"dependencies": {
 		"@microlink/react-json-view": "1.23.1",
 		"fflate": "0.8.2"
 	},
-	"description": "Log viewer for https://github.com/microsoft/vscode-pwa",
 	"devDependencies": {
 		"normalize.css": "8.0.1"
-	},
-	"main": "index.js",
-	"name": "vscode-pwa-analyzer",
-	"scripts": {
-		"build": "vite build",
-		"start": "vite"
 	}
 }
