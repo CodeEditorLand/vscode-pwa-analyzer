@@ -1,6 +1,6 @@
 {
 	"dependencies": {
-		"@microlink/react-json-view": "^1.23.1",
+		"@microlink/react-json-view": "^1.23.3",
 		"fflate": "^0.8.2"
 	},
 	"description": "Log viewer for https://github.com/microsoft/vscode-pwa",
