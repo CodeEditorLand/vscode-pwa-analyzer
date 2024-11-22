@@ -4,10 +4,12 @@
 
 function sortedIndex(arr: ReadonlyArray<number>, value: number): number {
 	let low = 0;
+
 	let high = arr.length;
 
 	while (low < high) {
 		const mid = (low + high) >>> 1;
+
 		if (arr[mid] < value) {
 			low = mid + 1;
 		} else {
@@ -41,6 +43,7 @@ export class RowSelection {
 	 */
 	public toggle(row: number) {
 		const index = sortedIndex(this.rows, row);
+
 		if (this.rows[index] === row) {
 			return new RowSelection(
 				[...this.rows.slice(0, index), ...this.rows.slice(index + 1)],
@@ -73,7 +76,9 @@ export class RowSelection {
 	 */
 	public range(toRow: number) {
 		let fromRow = this.lastRow;
+
 		const originalToRow = toRow;
+
 		if (fromRow === undefined || fromRow === toRow) {
 			return this;
 		}
@@ -85,12 +90,15 @@ export class RowSelection {
 		const max = this.rows.length
 			? Math.max(this.rows[this.rows.length - 1], toRow)
 			: toRow;
+
 		const min = this.rows.length
 			? Math.min(this.rows[0], fromRow)
 			: fromRow;
 
 		const next: number[] = [];
+
 		let rowIndex = 0;
+
 		for (let row = min; row <= max; row++) {
 			if (this.rows[rowIndex] === row) {
 				rowIndex++;
@@ -99,6 +107,7 @@ export class RowSelection {
 				next.push(row);
 			} else {
 				row = (this.rows[rowIndex] || fromRow) - 1;
+
 				continue;
 			}
 		}
