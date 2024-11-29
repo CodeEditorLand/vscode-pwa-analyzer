@@ -102,6 +102,7 @@ export class RowSelection {
 		for (let row = min; row <= max; row++) {
 			if (this.rows[rowIndex] === row) {
 				rowIndex++;
+
 				next.push(row);
 			} else if (row >= fromRow && row <= toRow) {
 				next.push(row);
