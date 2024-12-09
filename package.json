@@ -8,7 +8,7 @@
 		"normalize.css": "8.0.1"
 	},
 	"main": "index.js",
-	"name": "vscode-pwa-analyzer",
+	"name": "@codeeditorland/pwa-analyzer",
 	"scripts": {
 		"build": "vite build",
 		"start": "vite"
